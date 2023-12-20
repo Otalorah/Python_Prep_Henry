@@ -14,8 +14,9 @@ class Herramientas:
 
     def conversion_grados(self, origen, destino):
         for i in self.lista:
-            print(i, 'grados', origen, 'son', self.__conversion_grados(i, origen, destino),'grados',destino)
-    
+            print(i, 'grados', origen, 'son', self.__conversion_grados(
+                i, origen, destino), 'grados', destino)
+
     def factorial(self):
         for i in self.lista:
             print('El factorial de ', i, 'es', self.__factorial(i))
@@ -86,9 +87,9 @@ class Herramientas:
         return valor_destino
 
     def __factorial(self, numero):
-        if(type(numero) != int):
+        if (type(numero) != int):
             return 'El numero debe ser un entero'
-        if(numero < 0):
+        if (numero < 0):
             return 'El numero debe ser pisitivo'
         if (numero > 1):
             numero = numero * self.__factorial(numero - 1)

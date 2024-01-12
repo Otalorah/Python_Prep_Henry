@@ -16,12 +16,9 @@ def son_primos(lista):
     if type(lista) != list:
         return "No es una lista de números"
     else:
-        for i in lista:
-            primo = es_primo(i)
-            if primo:
-                lista_primos.append(i)
-
-    lista_primos.sort()
+        for n in lista:
+            primo = es_primo(n)
+            lista_primos.append(primo)
 
     return lista_primos
 
@@ -96,16 +93,20 @@ class Numeros():
     '''
 
     def __init__(self, valor):
-        self.valor = valor
+        if type(valor) == int:
+            self.valor = valor
         # A partir del valor ingresado se crea una lista
-        self.lista = list()
-        for i in range(valor):
-            i = round(random.randint(0, i+1))
-            self.lista.append(i)
+            self.lista = list()
+            if valor < 0: self.valor = valor * (-1)
+            elif valor == 0: self.valor += 1 
+            for i in range(self.valor):
+             i = round(random.randint(0, i+1))
+             self.lista.append(i)
+        else : raise ValueError("Se espera un número entero como parámetro")
+        
 
     def lista_primos(self):
-        primos = set(son_primos(self.lista))
-        return list(primos)
+        return son_primos(self.lista)
 
     def valor_modal(self):
         return repeticiones(self.lista)

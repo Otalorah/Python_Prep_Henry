@@ -12,7 +12,12 @@ def Factorial(numero):
         Factorial(-2) debe retornar nulo
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    if numero < 1 or type(numero) != int: return None
+    
+    if numero > 1: 
+        numero = numero * Factorial(numero-1)
+    return numero
+print("5! =",Factorial(5))
 
 def EsPrimo(valor):
     '''
@@ -26,8 +31,12 @@ def EsPrimo(valor):
         EsPrimo(8) debe retornar False
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
-    
+    if type(valor) != int: return None
+    for n in range(2,valor):
+        if valor % n == 0: return False
+    return True
+print("¿13 es primo?:",EsPrimo(13))
+
 def ClaseAnimal(especie, color):
     '''
     Esta función devuelve un objeto instanciado de la clase Animal, 
@@ -47,4 +56,24 @@ def ClaseAnimal(especie, color):
         a.CumpliAnios() -> debe devolver 3
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    if type(especie) != str or type(color) != str:
+        raise ValueError("Los parámetros deben ser strings")
+
+    class Animal():
+        def __init__(self,especie,color):
+            self.especie = especie
+            self.color = color
+            self.años = 0
+
+        def CumplirAños(self):
+            self.años += 1
+            return self.años
+        
+    return Animal(especie,color)
+
+a = ClaseAnimal("Perro","Negro")
+a.CumplirAños()
+a.CumplirAños()
+a.CumplirAños()
+a.CumplirAños()
+print(f"El {a.especie} tiene {a.años} años")
